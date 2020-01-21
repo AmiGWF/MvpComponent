@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wd.common.base.BaseActivity;
+import com.wd.common.router.RouterHelper;
 import com.wd.gua.R;
 
 /**
@@ -13,6 +15,7 @@ import com.wd.gua.R;
  * version: 1.0.0
  * desc   :
  */
+@Route(path = RouterHelper.R_AC_GUA_MAIN)
 public class GuaMainActivity extends BaseActivity {
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {

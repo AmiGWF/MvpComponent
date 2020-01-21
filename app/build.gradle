@@ -59,6 +59,7 @@ dependencies {
 
     implementation project(":c_util_common")
 
+    //编译时执行，不会打入APK包中
     annotationProcessor deps.butterknife_compiler
     annotationProcessor deps.dagger.compiler
     annotationProcessor deps.arouter_compiler

@@ -15,7 +15,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_login_gua"
+        android:id="@+id/tv_gua_btn"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginTop="60dp"

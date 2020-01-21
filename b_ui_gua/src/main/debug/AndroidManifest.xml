@@ -24,11 +24,11 @@
 
         <meta-data
             android:name="com.wd.common.life.GlobalConfiguration"
-            android:value="@string/common_config_value" />
+            android:value="ConfigModule" />
 
         <meta-data
             android:name="com.wd.gua.life.GlobalConfiguration"
-            android:value="@string/common_config_value" />
+            android:value="ConfigModule" />
     </application>
 
 </manifest>

@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.wd.common.life.GlobalConfiguration" android:value="@string/common_config_value"/>
+        <meta-data android:name="com.wd.common.life.GlobalConfiguration" android:value="ConfigModule"/>
 
-        <meta-data android:name="com.wd.nent.life.GlobalConfiguration" android:value="@string/common_config_value"/>
+        <meta-data android:name="com.wd.nent.life.GlobalConfiguration" android:value="ConfigModule"/>
 
 
     </application>
