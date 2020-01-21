@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wd.user">
+
+
+    <application>
+
+        <meta-data
+            android:name="com.wd.user.life.GlobalConfiguration"
+            android:value="@string/common_config_value" />
+
+    </application>
+</manifest>
