@@ -19,7 +19,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
-                //includeCompileClasspath true
+                includeCompileClasspath true
             }
         }
     }
@@ -73,14 +73,17 @@ android {
 
 dependencies {
     if (isDebugModule.toBoolean()) {
-        //编译时执行，不会打入APK包中
+        //debug模式，编译时执行，不会打入APK包中
         annotationProcessor deps.butterknife_compiler
-        annotationProcessor deps.dagger.compiler
+        annotationProcessor deps.dagger.android
+        annotationProcessor deps.dagger.android_support
+        annotationProcessor deps.dagger.android_support_compiler
         annotationProcessor deps.arouter_compiler
         debugImplementation deps.leakcanary
     } else {
         compileOnly deps.butterknife_compiler
-        compileOnly deps.dagger.compiler
+        compileOnly deps.dagger.android
+        compileOnly deps.dagger.android_support
         compileOnly deps.arouter_compiler
         debugImplementation deps.leakcanary
     }
