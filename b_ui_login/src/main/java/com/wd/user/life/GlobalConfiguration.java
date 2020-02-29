@@ -70,7 +70,7 @@ public final class GlobalConfiguration implements ConfigModule {
     public void injectFragmentLifecycle(Context context,
                                         List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
         //当所有模块集成到宿主 App 时, 在 App 中已经执行了以下代码, 所以不需要再执行
-        if (BuildConfig.IS_DEBUG_MODULE) {
+        if (BuildConfig.DEBUG) {
             lifecycles.add(new FragmentManager.FragmentLifecycleCallbacks() {
                 @Override
                 public void onFragmentCreated(@NonNull FragmentManager fm, @NonNull Fragment f,

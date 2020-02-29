@@ -10,7 +10,6 @@
         android:networkSecurityConfig="@xml/public_network_security_config"
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme">
-
         <activity
             android:name=".ui.activity.LoginMainActivity"
             android:configChanges="orientation|screenSize">

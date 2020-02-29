@@ -1,4 +1,4 @@
-if (isDebugModule.toBoolean()) {
+if (isAPPMoudle.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -24,16 +24,10 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
-
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
             buildConfigField "boolean", "USE_CANARY", "true"
-            buildConfigField "boolean", "IS_DEBUG_MODULE", "${isDebugModule}"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -41,15 +35,15 @@ android {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
-            buildConfigField "boolean", "IS_DEBUG_MODULE", "${isDebugModule}"
             minifyEnabled true
-            //去除无用资源--debug模式才可以使用改配置，否则提示：Error:Resource shrinker cannot be used for libraries.
-            if (isDebugModule.toBoolean()) {
-                shrinkResources true
-            }
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -62,7 +56,7 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
             //根据模式添加配置文件
-            if (isDebugModule.toBoolean()) {
+            if (isAPPMoudle.toBoolean()) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -72,19 +66,22 @@ android {
 }
 
 dependencies {
-    if (isDebugModule.toBoolean()) {
-        //debug模式，编译时执行，不会打入APK包中
-        annotationProcessor deps.butterknife_compiler
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":c_util_common")
+
+    annotationProcessor deps.butterknife_compiler
+
+    if (isAPPMoudle.toBoolean()) {
         annotationProcessor deps.dagger.android
         annotationProcessor deps.dagger.android_support
         annotationProcessor deps.dagger.android_support_compiler
         annotationProcessor deps.arouter_compiler
         debugImplementation deps.leakcanary
     } else {
-        compileOnly deps.butterknife_compiler
         compileOnly deps.dagger.android
         compileOnly deps.dagger.android_support
         compileOnly deps.arouter_compiler
         debugImplementation deps.leakcanary
     }
 }
+

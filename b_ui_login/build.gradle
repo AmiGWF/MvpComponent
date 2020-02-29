@@ -1,5 +1,1 @@
 apply from:"../common_component_build.gradle"
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":c_util_common")
-}

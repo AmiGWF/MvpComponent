@@ -1,0 +1,29 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wd.main">
+
+    <application
+        android:name="com.jess.arms.base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/main_app_name"
+        android:networkSecurityConfig="@xml/public_network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme">
+        <activity android:name=".ui.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.wd.common.life.GlobalConfiguration"
+            android:value="ConfigModule" />
+
+        <meta-data
+            android:name="com.wd.main.life.GlobalConfiguration"
+            android:value="ConfigModule" />
+
+    </application>
+</manifest>

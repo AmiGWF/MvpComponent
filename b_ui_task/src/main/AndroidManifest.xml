@@ -1,2 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wd.task" />
+    package="com.wd.task">
+
+    <application>
+        <activity
+            android:name=".ui.activity.FriendActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".ui.activity.PayActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <meta-data
+            android:name="com.wd.task.life.GlobalConfiguration"
+            android:value="ConfigModule" />
+    </application>
+
+</manifest>

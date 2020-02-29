@@ -1,0 +1,20 @@
+apply from:"../common_component_build.gradle"
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":c_util_common")
+
+    //library模式才可以加载，否则会报异常
+    if(!isAPPMoudle.toBoolean()){
+        if(isNeedLoginModule.toBoolean()){
+            runtimeOnly project(":b_ui_login")
+        }
+
+        if(isNeedGuaModule.toBoolean()){
+            runtimeOnly project(":b_ui_gua")
+        }
+
+        if(isNeedTaskModule.toBoolean()){
+            runtimeOnly project(":b_ui_task")
+        }
+    }
+}

@@ -18,13 +18,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -36,7 +39,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     // Support libraries
-    api deps.support.app_compat
+    api deps.androidx.app_compat
+    api deps.androidx.material
 
     //arouter
     api deps.arouter_api
@@ -49,4 +53,6 @@ dependencies {
     api deps.arms.retrofit
     api deps.arms.glide
 
+    //adapter
+    api deps.recycleViewAdapter
 }

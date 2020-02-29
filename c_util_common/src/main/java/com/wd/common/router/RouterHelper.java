@@ -10,9 +10,9 @@ public interface RouterHelper {
     /**
      * 组件名
      */
-    String R_APP = "/app";
     String R_LOGIN = "/login";
     String R_GUA = "/gua";
+    String R_TASK = "/task";
 
 
     /**
@@ -31,4 +31,13 @@ public interface RouterHelper {
      */
     String R_AC_GUA_MAIN = R_GUA + "/guaMain";
 
+    /**
+     * 支付
+     */
+    String R_AC_TASK_PAY = R_TASK + "/taskPay";
+
+    /**
+     * 朋友圈
+     */
+    String R_AC_TASK_FRIEND = R_TASK + "/taskFriend";
 }

@@ -1,2 +1,2 @@
-include ':app', ':b_ui_login', ':b_ui_gua', ':b_ui_task', ':c_util_common', ':c_util_widget', ':c_util_push'
+include ':app', ':b_ui_login', ':b_ui_gua', ':b_ui_task', ':c_util_common', ':c_util_widget', ':c_util_push', ':b_ui_main'
 rootProject.name='MvpComponent'

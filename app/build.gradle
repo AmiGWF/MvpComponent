@@ -24,7 +24,6 @@ android {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
             buildConfigField "boolean", "USE_CANARY", "true"
-            buildConfigField "boolean", "IS_DEBUG_MODULE", "${isDebugModule}"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -32,7 +31,6 @@ android {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
-            buildConfigField "boolean", "IS_DEBUG_MODULE", "${isDebugModule}"
             minifyEnabled true
             //去除无用资源
             shrinkResources true
@@ -56,25 +54,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":c_util_common")
-
-    if (isDebugModule.toBoolean()) {
-        //debug模式，编译时执行，不会打入APK包中
-        annotationProcessor deps.butterknife_compiler
-        annotationProcessor deps.dagger.android
-        annotationProcessor deps.dagger.android_support
-        annotationProcessor deps.dagger.android_support_compiler
-        annotationProcessor deps.arouter_compiler
-        debugImplementation deps.leakcanary
-    } else {
-        compileOnly deps.butterknife_compiler
-        compileOnly deps.dagger.android
-        compileOnly deps.dagger.android_support
-        compileOnly deps.arouter_compiler
-        debugImplementation deps.leakcanary
-
-        //在宿主 App 中使用 implementation 依赖业务组件, 业务组件的代码就会完全暴露给宿主 App, 不利于代码的隔离
-        //使用 runtimeOnly 依赖业务组件, 可实现业务组件的代码在编译时对宿主 App 不可见, 仅在运行时对宿主 App 可见
-        runtimeOnly project(":b_ui_gua")
-        runtimeOnly project(":b_ui_login")
+    //在main组件中配置组件的添加与移除
+    if(!isAPPMoudle.toBoolean()){
+        implementation project(":b_ui_main")
     }
+
 }
