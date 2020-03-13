@@ -23,7 +23,7 @@
         android:layout_marginTop="10dp"
         android:drawableTop="@mipmap/ic_launcher_round"
         android:drawablePadding="10dp"
-        android:text="微信支付"
+        android:text="支付宝支付"
         android:textSize="16sp"
         android:textStyle="bold" />
 
